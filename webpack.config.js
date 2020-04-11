@@ -3,15 +3,19 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
-  mode: 'none',
-
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
   },
 
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'app.bundle.js'
+    filename: '[name].bundle.js',
+  },
+
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
 
   module: {
@@ -22,15 +26,11 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
-          }
-        }
-      }
-    ]
-  },
-
-  devServer: {
-    contentBase: path.resolve(__dirname, 'build'),
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+    ],
   },
 
   plugins: [
@@ -43,12 +43,16 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'assets', '**', '*'),
           to: path.resolve(__dirname, 'build'),
-        }
-      ]
+        },
+      ],
     ),
     new webpack.DefinePlugin({
       'typeof CANVAS_RENDERER': JSON.stringify(true),
       'typeof WEBGL_RENDERER': JSON.stringify(true),
-    })
-  ]
+    }),
+  ],
+
+  devServer: {
+    contentBase: path.resolve(__dirname, 'build'),
+  },
 };
