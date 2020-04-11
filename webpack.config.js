@@ -12,6 +12,8 @@ module.exports = {
     filename: '[name].bundle.js',
   },
 
+  devtool: 'cheap-module-eval-source-map',
+
   optimization: {
     splitChunks: {
       chunks: 'all',
