@@ -12,8 +12,6 @@ module.exports = {
     filename: '[name].bundle.js',
   },
 
-  devtool: 'cheap-module-eval-source-map',
-
   optimization: {
     splitChunks: {
       chunks: 'all',
@@ -55,8 +53,4 @@ module.exports = {
       'typeof WEBGL_RENDERER': JSON.stringify(true),
     }),
   ],
-
-  devServer: {
-    contentBase: path.resolve(__dirname, 'build'),
-  },
 };
