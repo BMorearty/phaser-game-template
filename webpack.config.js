@@ -4,7 +4,7 @@ const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    app: './src/index.js',
+    game: './src/index.js',
   },
 
   output: {
