@@ -10,3 +10,5 @@ Game template for Phaser 3, including:
 Still needs:
 
 - Build gzipped files for production.
+
+![hello, phaser](screenshot.png)
